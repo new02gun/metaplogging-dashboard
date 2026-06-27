@@ -40,6 +40,8 @@ function fillQualityStats() {
   document.getElementById("qMissingCoords").textContent = QUALITY_STATS.missingCoords;
   document.getElementById("qMissingPhotos").textContent = QUALITY_STATS.missingPhotos;
   document.getElementById("qIncomplete").textContent = QUALITY_STATS.incompleteSessions;
+  const gpsNoiseStats = generateGpsNoiseStats();
+  document.getElementById("qGpsNoise").textContent = gpsNoiseStats.totalNoiseCount;
 }
 fillQualityStats();
 
@@ -227,13 +229,16 @@ const modalTableBody = document.getElementById("detailTableBody");
 const QUALITY_TITLES = {
   missingCoords: "좌표 누락 세션 목록",
   missingPhotos: "사진 미첨부 세션 목록",
-  incompleteSessions: "세션 미완료 건 목록"
+  incompleteSessions: "세션 미완료 건 목록",
+  gpsNoise: "GPS 노이즈(이상 좌표) 감지 목록"
 };
 
 document.querySelectorAll(".quality-card[data-quality]").forEach((card) => {
   card.addEventListener("click", () => {
     const type = card.dataset.quality;
-    const list = generateQualityDetailList(type);
+    const list = type === "gpsNoise"
+      ? generateGpsNoiseDetailList()
+      : generateQualityDetailList(type);
     modalTitle.textContent = QUALITY_TITLES[type];
     modalTableBody.innerHTML = list
       .map(

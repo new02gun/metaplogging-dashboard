@@ -103,11 +103,20 @@
           <span class="quality-desc">시스템 오류 또는 유저 이탈 징후</span>
         </button>
 
+        <button class="quality-card alert-amber" data-quality="gpsNoise">
+          <div class="quality-card-top">
+            <span class="quality-icon">📡</span>
+            <span class="quality-count" id="qGpsNoise">-</span>
+          </div>
+          <strong>GPS 노이즈 탐지</strong>
+          <span class="quality-desc">비현실적 이동속도 이상 좌표 감지</span>
+        </button>
+
         <div class="quality-card quality-card-static">
           <div class="quality-card-top">
             <span class="quality-icon">⋯</span>
           </div>
-          <strong>GPS 노이즈 탐지 · DB 무결성 검증</strong>
+          <strong>DB 무결성 검증</strong>
           <span class="quality-desc">검토 중 — 향후 적용 예정</span>
         </div>
       </div>
@@ -240,6 +249,7 @@
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
 <script src="data.js"></script>
+<script src="gps-noise.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
