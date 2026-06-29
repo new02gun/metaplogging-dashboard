@@ -389,6 +389,7 @@ button, select, input { font-family: inherit; }
 
 .chart-canvas-wrap { height: 260px; position: relative; }
 .chart-canvas-tall { height: 320px; }
+.chart-loading-text { font-size: 13px; color: #8B98A5; padding: 8px 0 4px; }
 
 /* ---------- 세그먼트 컨트롤 ---------- */
 .seg-control {

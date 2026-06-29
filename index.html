@@ -176,6 +176,17 @@
           </div>
         </div>
       </div>
+      <div class="chart-row">
+        <div class="chart-card chart-card-wide">
+          <div class="chart-card-head">
+            <h3>지역별 수거 비율 (구/군 단위)</h3>
+          </div>
+          <div id="districtPieProgress" class="chart-loading-text">위치 확인 중...</div>
+          <div class="chart-canvas-wrap">
+            <canvas id="districtPieChart"></canvas>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ---------- 사용자 현황 ---------- -->
@@ -249,6 +260,7 @@
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
 <script src="data.js"></script>
+<script src="district-pie.js"></script>
 <script src="gps-noise.js"></script>
 <script src="app.js"></script>
 </body>

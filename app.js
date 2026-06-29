@@ -324,8 +324,35 @@ document.getElementById("mapUserSelect").addEventListener("change", (e) => {
   if (currentMapType === "user") renderHeatmapByUser(e.target.value);
 });
 
+// ---------- 지역별 수거 비율 파이차트 ----------
+async function renderDistrictPieChart() {
+  const progressEl = document.getElementById("districtPieProgress");
+  const { labels, values } = await generateDistrictPieData((done, total) => {
+    progressEl.textContent = `위치 확인 중... ${done}/${total}`;
+  });
+  progressEl.style.display = "none";
+
+  const ctx = document.getElementById("districtPieChart");
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ["#5EEAD4", "#60A5FA", "#F5A623", "#FB923C", "#F97362", "#A78BFA"]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: "right", labels: { boxWidth: 10, boxHeight: 10 } } }
+    }
+  });
+}
+
 // ---------- 초기 렌더링 ----------
 renderTimeSeriesChart("today");
 renderMonthlyChart();
 renderUserStatsChart("today");
 initMap();
+renderDistrictPieChart();
